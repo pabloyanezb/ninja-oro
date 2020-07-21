@@ -63,9 +63,9 @@ export default {
 .nav-wrapper {
   padding-left: 10px;
 }
-span {
+/* span {
   color: #ffd76b;
-}
+} */
 h4 img {
   height: 1.5rem;
   position: relative;
@@ -77,4 +77,17 @@ img {
 .row {
   margin-bottom: 0;
 }
+.borrar {
+  float: right;
+  color: rgba(255, 255, 255, 0.87);
+}
+.fecha {
+  float: right;
+  margin-right: 20px;
+  margin-top: 2.5px;
+  font-style: italic;
+  font-size: 12pt;
+  color: rgba(255, 255, 255, 0.76);
+}
+
 </style>

@@ -6,5 +6,8 @@ export default {
 
     updateScore(newScore) {
         this.state.score += newScore;   
+    },
+    generarActividades(actividad) {
+        this.state.actividades = [...this.state.actividades, actividad];
     }
 }

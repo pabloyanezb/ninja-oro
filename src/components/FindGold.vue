@@ -1,14 +1,16 @@
 <template>
-  <div class="card-panel green lighten-4">
+  <div class="card-panel lime lighten-5">
     <h4 class="teal-text text-darken-3">{{ titulo }}</h4>
     <p class="teal-text text-darken-3">(genera{{ oro }} <img src="../assets/coin.png">)</p>
     <a class="btn waves-effect waves-light" @click="generarOro">Buscar Oro!</a> 
+    
   </div>
 </template>
 
 <script>
 import Store from "@/store.js";
-import Coin from '@/assets/coin.png'
+import Coin from '@/assets/coin.png';
+
 export default {
   name: "FindGold",
   props: {
@@ -27,7 +29,8 @@ export default {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', hour12: true};
       const fechaActual =  fecha.toLocaleDateString("es-CL", options);
       // Genera un arreglo que contenga la lista de actividades
-      Store.state.actividades = [...Store.state.actividades, `${((newScore < 0) ? 'Perdiste' : 'Ganaste')} <span>${newScore}</span> <img src="${Coin}"> ${((this.titulo == 'Casino') ? 'en el' : 'en la')} <b>${this.titulo}</b>${((newScore < 0) ? ' :(' : '!')} (${fechaActual})`];
+      const actividad = `${((newScore < 0) ? 'Perdiste' : 'Ganaste')} ${newScore} <img src="${Coin}"> ${((this.titulo == 'Casino') ? 'en el' : 'en la')} <b>${this.titulo}</b>${((newScore < 0) ? ' :(' : '!')} <span class='fecha'>(${fechaActual})</span>`;
+      Store.generarActividades(actividad);
     }
   }
 };

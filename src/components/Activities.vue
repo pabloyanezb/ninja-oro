@@ -2,7 +2,10 @@
   <div class="col s12">
     <h5 class="left-align">Actividades:</h5>
     <ul class="card-panel teal lighten-1 white-text left-align" ref="messageDisplay">
-      <li v-for="actividad in actividades" :key="actividad" v-html="actividad">{{ actividad }}</li>
+      <li v-for="(actividad, i) in actividades" :key="i">
+        <span class="borrar waves-effect waves-light" @click="$delete(actividades, i)">x</span>
+        <span v-html="actividad"></span>
+      </li>
     </ul>
   </div>
 </template>
@@ -36,5 +39,10 @@ ul {
 }
 li {
   font-size: 14pt;
+  padding: 0 10px;
 }
+li:nth-of-type(odd) {
+    background-color: #0000000e ;
+}
+
 </style>
