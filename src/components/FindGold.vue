@@ -1,9 +1,8 @@
 <template>
-  <div class="card-panel lime lighten-5">
+  <div class="card-panel">
     <h4 class="teal-text text-darken-3">{{ titulo }}</h4>
-    <p class="teal-text text-darken-3">(genera{{ oro }} <img src="../assets/coin.png">)</p>
+    <p class="grey-text text-darken-1">(genera entre {{ min }} <img src="../assets/coin.png"> y {{max}} <img src="../assets/coin.png">)</p>
     <a class="btn waves-effect waves-light" @click="generarOro">Buscar Oro!</a> 
-    
   </div>
 </template>
 
@@ -38,7 +37,7 @@ export default {
 
 <style scoped>
 img {
-  height: 1rem;
+  height: 10pt;
   position: relative;
   top: 2px;
 }
@@ -46,9 +45,19 @@ img {
   user-select: none;
   font-weight: 700;
   background-size: 190% auto;
-  background-image: linear-gradient(to right, #DFBD69 0%, #EDC967 51%, #ccaa6e 100%)
+  background-image: linear-gradient(to right, #DFBD69 0%, #EDC967 51%, #ccaa6e 100%);
 }
 .btn:hover {
   background-position: right center;
+}
+.card-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  min-height: 205px;
+  justify-content: space-between;
+}
+h4 {
+  margin-bottom: 0;
 }
 </style>

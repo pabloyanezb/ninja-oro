@@ -1,7 +1,7 @@
 <template>
   <div class="col s12">
-    <h5 class="left-align">Actividades:</h5>
-    <ul class="card-panel teal lighten-1 white-text left-align" ref="messageDisplay">
+    <h6 class="left-align">Actividades:</h6>
+    <ul class="card-panel teal darken-4 white-text left-align" ref="messageDisplay">
       <li v-for="(actividad, i) in actividades" :key="i">
         <span class="borrar waves-effect waves-light" @click="$delete(actividades, i)">x</span>
         <span v-html="actividad"></span>
@@ -34,7 +34,7 @@ export default {
 <style scoped>
 ul {
   padding: 1rem;
-  height: 15rem;
+  height: 11rem;
   overflow: auto;
 }
 li {
@@ -44,5 +44,4 @@ li {
 li:nth-of-type(odd) {
     background-color: #0000000e ;
 }
-
 </style>

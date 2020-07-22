@@ -2,33 +2,34 @@
   <div id="app" class="teal lighten-5">
     <div class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper left-align teal darken-3">
+        <div class="nav-wrapper left-align teal darken-4">
           <a href="#" class="brand-logo left">Oro Ninja</a>
         </div>
       </nav>
     </div>
     <div class="row">
-      <div class="card-panel col s4 offset-s4 brown lighten-1">
+      <div class="card-panel col s4 offset-s4 teal accent-4">
         <h4 class="white-text">Tu Oro: {{ score }} <img src="./assets/coin.png"></h4>
       </div>
     </div>
     <div class="row">
       <div class="col s3">
-        <FindGold titulo="Granja" oro=" 10-20" :min="10" :max="20"/>
+        <FindGold titulo="Granja" :min="10" :max="20"/>
       </div>
       <div class="col s3">
-        <FindGold titulo="Cueva" oro=" 5-10" :min="5" :max="10"/>
+        <FindGold titulo="Cueva" :min="5" :max="10"/>
       </div>
       <div class="col s3">
-        <FindGold titulo="Casa" oro=" 2-5" :min="2" :max="5"/>
+        <FindGold titulo="Casa" :min="2" :max="5"/>
       </div>
       <div class="col s3">
-        <FindGold titulo="Casino" oro=" o pierde 50" :min="-50" :max="50"/>
+        <FindGold titulo="Casino" :min="-50" :max="50"/>
       </div>
     </div>
     <div class="row"> 
       <Activities/>
     </div>
+    <a class="btn waves-effect waves-light teal accent-4" @click="reiniciar">Reiniciar</a> 
   </div>
 </template>
 
@@ -36,7 +37,6 @@
 import FindGold from "./components/FindGold.vue";
 import Activities from "./components/Activities.vue";
 import Store from "./store.js"
-
 
 export default {
   name: "App",
@@ -46,6 +46,15 @@ export default {
   },
   data() {
     return Store.state
+  },
+  methods: {
+    reiniciar() {
+      const respuesta = confirm('¿Estás seguro que quieres resetear el juego? Perderás todo el progreso');
+      if (respuesta) {
+        Store.state.score = 0;
+        Store.state.actividades = [];
+      }
+    }
   }
 };
 </script>
@@ -63,9 +72,6 @@ export default {
 .nav-wrapper {
   padding-left: 10px;
 }
-/* span {
-  color: #ffd76b;
-} */
 h4 img {
   height: 1.5rem;
   position: relative;
@@ -89,5 +95,4 @@ img {
   font-size: 12pt;
   color: rgba(255, 255, 255, 0.76);
 }
-
 </style>
