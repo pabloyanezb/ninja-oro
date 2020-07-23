@@ -22,14 +22,19 @@ export default {
     generarOro() {
       // Genera la cantidad de oro aleatoria y la actualiza
       const newScore = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+      Store.state.thisScore = newScore;
       Store.updateScore(newScore);
       // Obtiene la fecha actual
       const fecha = new Date();
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', hour12: true};
       const fechaActual =  fecha.toLocaleDateString("es-CL", options);
       // Genera un arreglo que contenga la lista de actividades
-      const actividad = `${((newScore < 0) ? 'Perdiste' : 'Ganaste')} ${newScore} <img src="${Coin}"> ${((this.titulo == 'Casino') ? 'en el' : 'en la')} <b>${this.titulo}</b>${((newScore < 0) ? ' :(' : '!')} <span class='fecha'>(${fechaActual})</span>`;
-      Store.generarActividades(actividad);
+      Store.generarActividades({
+        num: newScore,
+        text: `${((newScore < 0) ? 'Perdiste' : 'Ganaste')} ${newScore} <img src="${Coin}"> 
+        ${((this.titulo == 'Casino') ? 'en el' : 'en la')} <b>${this.titulo}</b>${((newScore < 0) ? ' :(' : '!')} 
+        <span class='fecha'>(${fechaActual})</span>`
+      });
     }
   }
 };

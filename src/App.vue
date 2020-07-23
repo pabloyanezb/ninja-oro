@@ -9,7 +9,10 @@
     </div>
     <div class="row">
       <div class="card-panel col s4 offset-s4 teal accent-4">
-        <h4 class="white-text">Tu Oro: {{ score }} <img src="./assets/coin.png"></h4>
+        <h4 :class="{ 'red-text': score < 0, 'text-accent-4': score < 0, 'white-text': score >= 0}">
+          <span class="white-text">Tu Oro:</span>  {{ score }} 
+          <img src="./assets/coin.png">
+        </h4>
       </div>
     </div>
     <div class="row">
