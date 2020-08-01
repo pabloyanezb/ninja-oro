@@ -2,8 +2,8 @@
   <div class="col s12">
     <h6 class="left-align">Actividades:</h6>
     <ul class="card-panel teal darken-4 white-text left-align" ref="messageDisplay">
-      <li v-for="(actividad, i) in actividades" :key="i" :class="{ 'red-text': actividad.num < 0, 'green-text': actividad.num > 0, 'text-accent-3': actividad.num > 0 }">
-        <span class="borrar waves-effect waves-light" @click="$delete(actividades, i)">x</span>
+      <li v-for="(actividad, i) in Actividades" :key="i" :class="{ 'red-text': actividad.num < 0, 'green-text':actividad.num > 0, 'text-accent-3':actividad.num > 0 }">
+        <span class="borrar waves-effect waves-light" @click="$delete(Actividades, i)">x</span>
         <span v-html="actividad.text"></span>
       </li>
     </ul>
@@ -11,12 +11,13 @@
 </template>
 
 <script>
-import Store from "@/store.js";
 
 export default {
   name: "Activities",
-  data() {
-    return Store.state;
+  computed: {
+    Actividades() {
+      return this.$store.getters.getActivities;
+    }
   },
   // Metodo para que la lista haga scroll automáticamente hasta el final
   updated() {

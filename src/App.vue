@@ -39,7 +39,6 @@
 <script>
 import FindGold from "./components/FindGold.vue";
 import Activities from "./components/Activities.vue";
-import Store from "./store.js"
 
 export default {
   name: "App",
@@ -47,16 +46,14 @@ export default {
     FindGold,
     Activities
   },
-  data() {
-    return Store.state
+  computed: {
+    score() {
+       return this.$store.getters.getScore
+    }
   },
   methods: {
     reiniciar() {
-      const respuesta = confirm('¿Estás seguro que quieres resetear el juego? Perderás todo el progreso');
-      if (respuesta) {
-        Store.state.score = 0;
-        Store.state.actividades = [];
-      }
+      this.$store.commit('reiniciar')
     }
   }
 };
